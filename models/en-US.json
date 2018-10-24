@@ -1,41 +1,105 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "greeter",
-      "types": [
-
-      ],
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": [
-
-          ]
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "cat society",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "BudgetIntent",
+                    "slots": [],
+                    "samples": [
+                        "how much money do have left",
+                        "how much money do have",
+                        "what is the budget"
+                    ]
+                },
+                {
+                    "name": "EventIntent",
+                    "slots": [
+                        {
+                            "name": "type",
+                            "type": "event_type",
+                            "samples": [
+                                "i want to have a {type}",
+                                "{type}",
+                                "a {type}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "what {type} can we do",
+                        "what can we do"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "event_type",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "dinner",
+                                "synonyms": [
+                                    "evening dinner",
+                                    "lunch",
+                                    "food"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "funtastic",
+                                "synonyms": [
+                                    "action",
+                                    "fun"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
         },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": [
-
-          ]
+        "dialog": {
+            "intents": [
+                {
+                    "name": "EventIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "type",
+                            "type": "event_type",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.81694351122.330323891563"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": [
-
-          ]
-        },
-        {
-          "name": "HelloWorldIntent",
-          "slots": [
-
-          ],
-          "samples": [
-            "hello",
-            "say hello",
-            "say hello world"
-          ]
-        }
-      ]
+        "prompts": [
+            {
+                "id": "Elicit.Slot.81694351122.330323891563",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "a dinner or a funtastic. what do you want to do?"
+                    }
+                ]
+            }
+        ]
     }
-  }
 }
